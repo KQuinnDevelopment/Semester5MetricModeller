@@ -8,6 +8,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <script src="../js/calculateFp.js"></script>
   <!-- custom css -->
   <link rel="stylesheet" type="text/css" href="../style/calculator.css">
 </head>
@@ -39,9 +40,137 @@
         Using our database, we will calculate an estimated project length based on the parameters inputted on the form below...
       </i>
     </p>
+    <h2>Function Point Calculator</h2>
+    <form class="my-1" id="fpCalculator">
+      <fieldset>
+        <legend>Please enter the number of each item you are expecting to use in your project.</legend>
+        <div class="form-group p-2">
+          <label for="inputs">User Inputs:</label>
+          <input class="unadjusted" type="number" id="inputs" name="inputs" min="0" required>
+        </div>
+        <div class="form-group p-2">
+          <label for="outputs">User Outputs:</label>
+          <input class="unadjusted" type="number" id="outputs" name="outputs" min="0" required>
+        </div>
+        <div class="form-group p-2">
+          <label for="inquiries">User Inquiries:</label>
+          <input class="unadjusted" type="number" id="inquiries" name="inquiries" min="0" required>
+        </div>
+        <div class="form-group p-2">
+          <label for="files">Master Files:</label>
+          <input class="unadjusted" type="number" id="files" name="files" min="0" required>
+        </div>
+        <div class="form-group p-2">
+          <label for="interfaces">External Interfaces:</label>
+          <input class="unadjusted" type="number" id="interfaces" name="interfaces" min="0" required>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>For each item please choose how heavily they are weighted within your project.</legend>
+        <table>
+          <tr>
+            <th></th>
+            <th>Simple</th>
+            <th>Average</th>
+            <th>Complex</th>
+          </tr>
+          <tr>
+            <td>User Inputs:</td>
+            <td><input type="radio" name="inputsWeight" value="3" required></td>
+            <td><input type="radio" name="inputsWeight" value="4"></td>
+            <td><input type="radio" name="inputsWeight" value="6"></td>
+          </tr>
+          <tr>
+            <td>User Outputs:</td>
+            <td><input type="radio" name="outputsWeight" value="4" required></td>
+            <td><input type="radio" name="outputsWeight" value="5"></td>
+            <td><input type="radio" name="outputsWeight" value="7"></td>
+          </tr>
+          <tr>
+            <td>User Inquiries:</td>
+            <td><input type="radio" name="inquiriesWeight" value="3" required></td>
+            <td><input type="radio" name="inquiriesWeight" value="4"></td>
+            <td><input type="radio" name="inquiriesWeight" value="6"></td>
+          </tr>
+          <tr>
+            <td>Master Files:</td>
+            <td><input type="radio" name="filesWeight" value="7" required></td>
+            <td><input type="radio" name="filesWeight" value="10"></td>
+            <td><input type="radio" name="filesWeight" value="15"></td>
+          </tr>
+          <tr>
+            <td>Interfaces:</td>
+            <td><input type="radio" name="interfacesWeight" value="5" required></td>
+            <td><input type="radio" name="interfacesWeight" value="7"></td>
+            <td><input type="radio" name="interfacesWeight" value="10"></td>
+          </tr>
+        </table>
+      </fieldset>
+      <fieldset>
+        <legend>Please rate the amount of influence each technical complexity factor has within your project from 0-5.<br/> (0-5, 0 being non existent, 5 being absolutely necessary for your project to function)</legend>
+        <div class="form-group p-2">
+          <label for="communications">Data communications:</label>
+          <input class="technical" type="number" id="communications" name="communications" min="0" max="5" required>
+        </div>
+        <div class="form-group p-2">
+          <label for="distributed">Distributed data:</label>
+          <input class="technical" type="number" id="distributed" name="distributed" min="0" max="5" required>
+        </div>
+        <div class="form-group p-2">
+          <label for="performance">Performance criteria:</label>
+          <input class="technical" type="number" id="performance" name="performance" min="0" max="5" required>
+        </div>
+        <div class="form-group p-2">
+          <label for="hardware">Heavy Hardware Usage:</label>
+          <input class="technical" type="number" id="hardware" name="hardware" min="0" max="5" required>
+        </div>
+        <div class="form-group p-2">
+          <label for="transaction">High Transaction Rates:</label>
+          <input class="technical" type="number" id="transaction" name="transaction" min="0" max="5" required>
+        </div>
+        <div class="form-group p-2">
+          <label for="data_entry">Online Data Entry:</label>
+          <input class="technical" type="number" id="data_entry" name="data_entry" min="0" max="5" required>
+        </div>
+        <div class="form-group p-2">
+          <label for="updating">Online Updating:</label>
+          <input class="technical" type="number" id="updating" name="updating" min="0" max="5" required>
+        </div>
+        <div class="form-group p-2">
+          <label for="computations">Complex Computations:</label>
+          <input class="technical" type="number" id="computations" name="computations" min="0" max="5" required>
+        </div>
+        <div class="form-group p-2">
+          <label for="installation">Ease of Installation:</label>
+          <input class="technical" type="number" id="installation" name="installation" min="0" max="5" required>
+        </div>
+        <div class="form-group p-2">
+          <label for="operation">Ease of Operation:</label>
+          <input class="technical" type="number" id="operation" name="operation" min="0" max="5" required>
+        </div>
+        <div class="form-group p-2">
+          <label for="portability">Portability:</label>
+          <input class="technical" type="number" id="portability" name="portability" min="0" max="5" required>
+        </div>
+        <div class="form-group p-2">
+          <label for="maintainability">Maintainability:</label>
+          <input class="technical" type="number" id="maintainability" name="maintainability" min="0" max="5" required>
+        </div>
+        <div class="form-group p-2">
+          <label for="efficiency">End-user Efficiency:</label>
+          <input class="technical" type="number" id="efficiency" name="efficiency" min="0" max="5" required>
+        </div>
+        <div class="form-group p-2">
+          <label for="reusability">Reusability:</label>
+          <input class="technical" type="number" id="reusability" name="reusability" min="0" max="5" required>
+        </div>
+      </fieldset>
+      <input type="submit" value="Calculate">
+    </form>
     <div id="formOutput" class="mx-auto my-3 border w-50">
-
+  
     </div>
+    <!--
     <form class="my-1" action="">
       <div class="form-group p-2">
         <select id="" name="" class="w-50 p-1">
@@ -64,6 +193,7 @@
 
       <button id="" class="btn btn-primary my-2 py-2" type="submit">Submit</button>
     </form>
+    -->
   </div>
   <footer class="border-top footer text-muted text-center">
     <div class="container py-2">

@@ -3,3 +3,20 @@
   min-height: 300px;
   min-width: 500px; 
 }
+fieldset {
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+}
+legend {
+  margin-bottom: 1vh;
+}
+label {
+  width: 20vw;
+  text-align: left;
+}
+table {
+  width: 50vw;
+  margin-left: 5vw;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+}
