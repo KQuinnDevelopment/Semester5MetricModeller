@@ -2,7 +2,7 @@
 
 include_once "../config/db.php";
 
-if ( $_SERVER['REQUEST_METHOD'] === 'POST' )
+if ( $_SERVER['REQUEST_METHOD'] === 'GET' )
 {  
     try
     {
@@ -15,7 +15,7 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' )
         die("Error: Could not connect: " . $e->getMessage());
     }
     $result = $stmt->fetchAll();
-    return $result;
+    echo json_encode($result);
 }
 return 0;
 ?>

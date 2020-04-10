@@ -12,7 +12,7 @@ try {
     $database = "metric_modeller";
     $options = [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_BOTH,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
         //if not enabled some queries dont work
             //posts will not be loaded
         PDO::ATTR_EMULATE_PREPARES => false,
