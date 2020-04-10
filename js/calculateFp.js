@@ -48,11 +48,11 @@ window.onload = function () {
 
         for ( i = 0; i < complexItems.length; i++ )
         {
-            technical += complexItems[i].value;
+            technical += parseInt(complexItems[i].value);
         }
         
         tcf = 0.65 + ( 0.1 * technical);
-
         fp = tcf * ufp;
+        console.log("Function Points: " + fp);
     };
 };
