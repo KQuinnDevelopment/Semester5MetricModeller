@@ -168,12 +168,16 @@
       <input type="submit" value="Calculate">
     </form>
     <div id="languageDiv">
-      <label for="language" id="languageLabel">Please select the language you are going to use, this will give an estimate into how many Lines of Code (LOC) will be required for the project.</label>
-      <select name="language" id="language">
-      </select>
+      <form id="calculateLOC">
+        <label for="language" id="languageLabel">Please select the language you are going to use, this will give an estimate into how many Lines of Code (LOC) will be required for the project.</label>
+        <select name="language" id="language" required>
+        </select>
+        <input type="submit" value="Calculate LOC">
+      </form>
     </div>
     <div id="formOutput" class="mx-auto my-3 border w-50">
-  
+      <p id="outputFP"></p>
+      <p id="outputLOC"></p>
     </div>
     <!--
     <form class="my-1" action="">

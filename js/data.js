@@ -1,13 +1,12 @@
 window.onload = function () {
 
     // AJAX request to get table contents
-    $.getJSON('../data/php/language_productivity.php')
+    $.getJSON('../data/php/language_productivity.php', {column: null} )
     .done( function(data) { 
-        console.log('Retrieved data');
         populateTable(data); 
     })
-    .fail(function() {
-        console.log('Failed to retrieve data.');
+    .fail( function() {
+        console.error('Failed to retrieve data.');
     });
 };
 

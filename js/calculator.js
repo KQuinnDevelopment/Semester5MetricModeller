@@ -2,20 +2,32 @@
 window.onload = function () {
     this.populateLanguages();
     this.calculateFp();
+    this.calculateLOC();
 };
 
 function populateLanguages() {
-    $.getJSON('../data/php/language_productivity.php' )
+    $.getJSON('../data/php/language_productivity.php', {column: 'source'} )
     .done( function(data) {
         for( i = 0; i < data.length; i++ )
         {
-            $('#language').append('<option value="' + data[i].ID + '">' + data[i].LANGUAGE + '</option>');
+            $('#language').append('<option languageID="' + data[i].ID + '" value="' + data[i].SOURCE + '">' + data[i].LANGUAGE + '</option>');
         }
     })
     .fail( function() {
-        console.log('Failed to retrieve data.')
+        console.error('Failed to retrieve data.');
     });
 };
+
+function calculateLOC( fp ) {
+    form = document.getElementById('calculateLOC');
+    form.onsubmit = function(e) {
+        e.preventDefault();
+        source = parseInt(document.getElementById('language').value);
+        loc = Math.round( source * fp ); 
+        outputLOC = document.getElementById("outputLOC");
+        outputLOC.innerHTML = "Lines of Code: " + loc;
+    }
+}
 
 function calculateFp() {
     var form = document.getElementById('fpCalculator');
@@ -78,9 +90,9 @@ function calculateFp() {
         // Calculate total function points
         // Round to one deciaml place
         fp = Math.round( (tcf * ufp) * 10 ) / 10;
-        outputDiv = document.getElementById("formOutput");
-        outputDiv.innerHTML = "Function Points: " + fp;
-        // Debug output
-        console.log("Function Points: " + fp);
+        outputFP = document.getElementById("outputFP");
+        outputFP.innerHTML = "Function Points: " + fp;
+
+        calculateLOC(fp);
     };
 };
