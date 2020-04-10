@@ -14,12 +14,13 @@ function calculateEAF() {
 
         e.preventDefault();
 
+        eafValues = [];
         reliabilityFactor = document.getElementsByClassName('reliability');
         for ( i = 0; i < reliabilityFactor.length; i++ )
         {
             if ( reliabilityFactor[i].checked )
             {
-                reliability = reliabilityFactor[i].value;
+                eafValues.push( parseFloat( reliabilityFactor[i].value ) );
             }
         }
 
@@ -28,7 +29,7 @@ function calculateEAF() {
         {
             if ( sizeFactor[i].checked )
             {
-                size = sizeFactor[i].value;
+                eafValues.push( parseFloat( sizeFactor[i].value ) );
             }
         }
 
@@ -37,7 +38,7 @@ function calculateEAF() {
         {
             if ( complexityFactor[i].checked )
             {
-                complexity = complexityFactor[i].value;
+                eafValues.push( parseFloat( complexityFactor[i].value ) );
             }
         }
 
@@ -46,7 +47,7 @@ function calculateEAF() {
         {
             if ( runtimeFactor[i].checked )
             {
-                runtime = runtimeFactor[i].value;
+                eafValues.push( parseFloat( runtimeFactor[i].value ) );
             }
         }
 
@@ -55,7 +56,7 @@ function calculateEAF() {
         {
             if ( memoryFactor[i].checked )
             {
-                memory = memoryFactor[i].value;
+                eafValues.push( parseFloat( memoryFactor[i].value ) );
             }
         }
 
@@ -64,7 +65,7 @@ function calculateEAF() {
         {
             if ( volatilityFactor[i].checked )
             {
-                volatility = volatilityFactor[i].value;
+                eafValues.push( parseFloat( volatilityFactor[i].value ) );
             }
         }
 
@@ -73,7 +74,7 @@ function calculateEAF() {
         {
             if ( turnaboutFactor[i].checked )
             {
-                turnabout = turnaboutFactor[i].value;
+                eafValues.push( parseFloat( turnaboutFactor[i].value ) );
             }
         }
 
@@ -82,7 +83,7 @@ function calculateEAF() {
         {
             if ( analystFactor[i].checked )
             {
-                analyst = analystFactor[i].value;
+                eafValues.push( parseFloat( analystFactor[i].value ) );
             }
         }
 
@@ -91,7 +92,7 @@ function calculateEAF() {
         {
             if ( applicationsFactor[i].checked )
             {
-                applications = applicationsFactor[i].value;
+                eafValues.push( parseFloat( applicationsFactor[i].value ) );
             }
         }
 
@@ -100,7 +101,7 @@ function calculateEAF() {
         {
             if ( engineerFactor[i].checked )
             {
-                engineer = engineerFactor[i].value;
+                eafValues.push( parseFloat( engineerFactor[i].value ) );
             }
         }
 
@@ -109,7 +110,7 @@ function calculateEAF() {
         {
             if ( vmFactor[i].checked )
             {
-                vm = vmFactor[i].value;
+                eafValues.push( parseFloat( vmFactor[i].value ) );
             }
         }
 
@@ -118,7 +119,7 @@ function calculateEAF() {
         {
             if ( languageFactor[i].checked )
             {
-                language = languageFactor[i].value;
+                eafValues.push( parseFloat( languageFactor[i].value ) );
             }
         }
 
@@ -127,7 +128,7 @@ function calculateEAF() {
         {
             if ( methodsFactor[i].checked )
             {
-                methods = methodsFactor[i].value;
+                eafValues.push( parseFloat( methodsFactor[i].value ) );
             }
         }
 
@@ -136,7 +137,7 @@ function calculateEAF() {
         {
             if ( toolsFactor[i].checked )
             {
-                tools = toolsFactor[i].value;
+                eafValues.push( parseFloat( toolsFactor[i].value ) );
             }
         }
 
@@ -145,9 +146,38 @@ function calculateEAF() {
         {
             if ( scheduleFactor[i].checked )
             {
-                schedule = scheduleFactor[i].value;
+                eafValues.push( parseFloat( scheduleFactor[i].value ) );
             }
         }
+
+        B = 1;
+        for ( i = 0; i < eafValues.length; i++ ) 
+        {
+            if ( ! isNaN( eafValues[i] ) )
+            {   
+                B *= eafValues[i];
+            }
+        }
+
+        type = document.getElementsByName('type');
+        for ( i = 0; i < type.length; i++ )
+        {
+            if ( type[i].checked )
+            {
+                A = type[i].getAttribute('a');
+                C = type[i].getAttribute('c');
+                D = type[i].getAttribute('d');
+                E = type[i].getAttribute('e');
+            }
+        }
+        outputLOC = document.getElementById("outputLOC");
+        kloc = parseInt( outputLOC.getAttribute("loc") ) / 1000;
+        effort = A * B * ( Math.pow( kloc, C ) );
+        time = D * ( Math.pow( effort, E ) );
+        outputEffort = document.getElementById('effort');
+        outputEffort.innerHTML = "Estimated effort in person months: " + effort;
+        outputTime = document.getElementById('time');
+        outputTime.innerHTML = "Total months estimated for project: " + time;
     };
 };
 
@@ -164,7 +194,9 @@ function populateLanguages() {
     });
 };
 
-function calculateLOC( fp ) {
+function calculateLOC() {
+    outputFP = document.getElementById("outputFP");
+    fp = outputFP.getAttribute('fp');
     form = document.getElementById('calculateLOC');
     form.onsubmit = function(e) {
         e.preventDefault();
@@ -172,6 +204,7 @@ function calculateLOC( fp ) {
         loc = Math.round( source * fp ); 
         outputLOC = document.getElementById("outputLOC");
         outputLOC.innerHTML = "Lines of Code: " + loc;
+        outputLOC.setAttribute("loc", loc);
     }
 }
 
@@ -238,7 +271,6 @@ function calculateFp() {
         fp = Math.round( (tcf * ufp) * 10 ) / 10;
         outputFP = document.getElementById("outputFP");
         outputFP.innerHTML = "Function Points: " + fp;
-
-        calculateLOC(fp);
+        outputFP.setAttribute("fp", fp);
     };
 };
