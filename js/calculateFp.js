@@ -53,6 +53,8 @@ window.onload = function () {
         
         tcf = 0.65 + ( 0.1 * technical);
         fp = tcf * ufp;
+        outputDiv = document.getElementById("formOutput");
+        outputDiv.innerHTML = "Function Points: " + fp;
         console.log("Function Points: " + fp);
     };
 };
