@@ -1,7 +1,7 @@
 
 window.onload = function () {
+    this.populateLanguages();
     this.calculateFp();
-
 };
 
 function populateLanguages() {
