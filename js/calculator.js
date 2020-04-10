@@ -156,6 +156,7 @@ function calculateEAF() {
             if ( ! isNaN( eafValues[i] ) )
             {   
                 B *= eafValues[i];
+                console.log(eafValues[i]);
             }
         }
 
@@ -164,16 +165,19 @@ function calculateEAF() {
         {
             if ( type[i].checked )
             {
-                A = type[i].getAttribute('a');
-                C = type[i].getAttribute('c');
-                D = type[i].getAttribute('d');
-                E = type[i].getAttribute('e');
+                console.log(type[i]);
+                A = parseFloat( type[i].getAttribute('a') );
+                C = parseFloat( type[i].getAttribute('c') );
+                D = parseFloat( type[i].getAttribute('d') );
+                E = parseFloat( type[i].getAttribute('e') );
             }
         }
         outputLOC = document.getElementById("outputLOC");
-        kloc = parseInt( outputLOC.getAttribute("loc") ) / 1000;
+        kloc = parseInt( outputLOC.getAttribute("loc") ) / 100;
         effort = A * B * ( Math.pow( kloc, C ) );
+        effort = Math.round( effort * 10 ) / 10;
         time = D * ( Math.pow( effort, E ) );
+        time = Math.round( time * 10 ) / 10;
         outputEffort = document.getElementById('effort');
         outputEffort.innerHTML = "Estimated effort in person months: " + effort;
         outputTime = document.getElementById('time');
