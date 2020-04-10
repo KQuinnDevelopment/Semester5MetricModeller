@@ -175,6 +175,160 @@
         <input type="submit" value="Calculate LOC">
       </form>
     </div>
+    <div>
+      <form id="calculateEAF">
+        <fieldset>
+          <label>To calculate the Effort Adjustment Factor for the project<br />rate the importance of each factor.</label>
+          <table>
+            <tr>
+              <th></th>
+              <th>Very Low</th>
+              <th>Low</th>
+              <th>Nominal</th>
+              <th>High</th>
+              <th>Very High</th>
+              <th>Extra High</th>
+            </tr>
+            <tr>
+              <th>Required software reliability</th>
+              <td><input class="eaf" type="radio" name="reliability" value="0.75" required></th>
+              <td><input class="eaf" type="radio" name="reliability" value="0.88"></td>
+              <td><input class="eaf" type="radio" name="reliability" value="1.00"></td>
+              <td><input class="eaf" type="radio" name="reliability" value="1.15"></td>
+              <td><input class="eaf" type="radio" name="reliability" value="1.40"></td>
+              <td><input class="eaf" type="radio" name="reliability" value="null"></td>
+            </tr>
+            <tr>
+              <th>Size of application database</th>
+              <td><input class="eaf" type="radio" name="size" value="null" required></td>
+              <td><input class="eaf" type="radio" name="size" value="0.94"></td>
+              <td><input class="eaf" type="radio" name="size" value="1.00"></td>
+              <td><input class="eaf" type="radio" name="size" value="1.08"></td>
+              <td><input class="eaf" type="radio" name="size" value="1.16"></td>
+              <td><input class="eaf" type="radio" name="size" value="null"></td>
+            </tr>
+            <tr>
+              <th>Complexity of the product</th>
+              <td><input class="eaf" type="radio" name="complexity" value="0.70" required></td>
+              <td><input class="eaf" type="radio" name="complexity" value="0.85"></td>
+              <td><input class="eaf" type="radio" name="complexity" value="1.00"></td>
+              <td><input class="eaf" type="radio" name="complexity" value="1.15"></td>
+              <td><input class="eaf" type="radio" name="complexity" value="1.30"></td>
+              <td><input class="eaf" type="radio" name="complexity" value="1.65"></td>
+            </tr>
+            <tr>
+              <th>Run-time performance constraints</th>
+              <td><input class="eaf" type="radio" name="runtime" value="null" required></td>
+              <td><input class="eaf" type="radio" name="runtime" value="null"></td>
+              <td><input class="eaf" type="radio" name="runtime" value="1.00"></td>
+              <td><input class="eaf" type="radio" name="runtime" value="1.11"></td>
+              <td><input class="eaf" type="radio" name="runtime" value="1.30"></td>
+              <td><input class="eaf" type="radio" name="runtime" value="1.66"></td>
+            </tr>
+            <tr>
+              <th>Memory constraints</th>
+              <td><input class="eaf" type="radio" name="memory" value="null" required></td>
+              <td><input class="eaf" type="radio" name="memory" value="null"></td>
+              <td><input class="eaf" type="radio" name="memory" value="1.00"></td>
+              <td><input class="eaf" type="radio" name="memory" value="1.06"></td>
+              <td><input class="eaf" type="radio" name="memory" value="1.21"></td>
+              <td><input class="eaf" type="radio" name="memory" value="1.56"></td>
+            </tr>
+            <tr>
+              <th>Volatility of the virtual machine environment</th>
+              <td><input class="eaf" type="radio" name="volatility" value="null" required></td>
+              <td><input class="eaf" type="radio" name="volatility" value="0.87"></td>
+              <td><input class="eaf" type="radio" name="volatility" value="1.00"></td>
+              <td><input class="eaf" type="radio" name="volatility" value="1.15"></td>
+              <td><input class="eaf" type="radio" name="volatility" value="1.30"></td>
+              <td><input class="eaf" type="radio" name="volatility" value="null"></td>
+            </tr>
+            <tr>
+              <th>Required turnabout time</th>
+              <td><input class="eaf" type="radio" name="turnabout" value="null" required></td>
+              <td><input class="eaf" type="radio" name="turnabout" value="0.87"></td>
+              <td><input class="eaf" type="radio" name="turnabout" value="1.00"></td>
+              <td><input class="eaf" type="radio" name="turnabout" value="1.07"></td>
+              <td><input class="eaf" type="radio" name="turnabout" value="1.15"></td>
+              <td><input class="eaf" type="radio" name="turnabout" value="null"></td>
+            </tr>
+            <tr>
+              <th>Analyst capability</th>
+              <td><input class="eaf" type="radio" name="analyst" value="1.46" required></td>
+              <td><input class="eaf" type="radio" name="analyst" value="1.19"></td>
+              <td><input class="eaf" type="radio" name="analyst" value="1.00"></td>
+              <td><input class="eaf" type="radio" name="analyst" value="0.86"></td>
+              <td><input class="eaf" type="radio" name="analyst" value="0.71"></td>
+              <td><input class="eaf" type="radio" name="analyst" value="null"></td>
+            </tr>
+            <tr>
+              <th>Applications experience</th>
+              <td><input class="eaf" type="radio" name="applications" value="1.29" required></td>
+              <td><input class="eaf" type="radio" name="applications" value="1.13"></td>
+              <td><input class="eaf" type="radio" name="applications" value="1.00"></td>
+              <td><input class="eaf" type="radio" name="applications" value="0.91"></td>
+              <td><input class="eaf" type="radio" name="applications" value="0.82"></td>
+              <td><input class="eaf" type="radio" name="applications" value="null"></td>
+            </tr>
+            <tr>
+              <th>Software engineer capability</th>
+              <td><input class="eaf" type="radio" name="engineer" value="1.42" required></td>
+              <td><input class="eaf" type="radio" name="engineer" value="1.17"></td>
+              <td><input class="eaf" type="radio" name="engineer" value="1.00"></td>
+              <td><input class="eaf" type="radio" name="engineer" value="0.86"></td>
+              <td><input class="eaf" type="radio" name="engineer" value="0.70"></td>
+              <td><input class="eaf" type="radio" name="engineer" value="null"></td>
+            </tr>
+            <tr>
+              <th>Virtual machine experience</th>
+              <td><input class="eaf" type="radio" name="vm" value="1.21" required></td>
+              <td><input class="eaf" type="radio" name="vm" value="1.10"></td>
+              <td><input class="eaf" type="radio" name="vm" value="1.00"></td>
+              <td><input class="eaf" type="radio" name="vm" value="0.91"></td>
+              <td><input class="eaf" type="radio" name="vm" value="null"></td>
+              <td><input class="eaf" type="radio" name="vm" value="null"></td>
+            </tr>
+            <tr>
+              <th>Programming language experience</th>
+              <td><input class="eaf" type="radio" name="language" value="1.14" required></td>
+              <td><input class="eaf" type="radio" name="language" value="1.07"></td>
+              <td><input class="eaf" type="radio" name="language" value="1.00"></td>
+              <td><input class="eaf" type="radio" name="language" value="0.95"></td>
+              <td><input class="eaf" type="radio" name="language" value="null"></td>
+              <td><input class="eaf" type="radio" name="language" value="null"></td>
+            </tr>
+            <tr>
+              <th>Application of software engineering methods</th>
+              <td><input class="eaf" type="radio" name="methods" value="1.24" required></td>
+              <td><input class="eaf" type="radio" name="methods" value="1.10"></td>
+              <td><input class="eaf" type="radio" name="methods" value="1.00"></td>
+              <td><input class="eaf" type="radio" name="methods" value="0.91"></td>
+              <td><input class="eaf" type="radio" name="methods" value="0.82"></td>
+              <td><input class="eaf" type="radio" name="methods" value="null"></td>
+            </tr>
+            <tr>
+              <th>Use of software tools</th>
+              <td><input class="eaf" type="radio" name="tools" value="1.24" required></td>
+              <td><input class="eaf" type="radio" name="tools" value="1.10"></td>
+              <td><input class="eaf" type="radio" name="tools" value="1.00"></td>
+              <td><input class="eaf" type="radio" name="tools" value="0.91"></td>
+              <td><input class="eaf" type="radio" name="tools" value="0.83"></td>
+              <td><input class="eaf" type="radio" name="tools" value="null"></td>
+            </tr>
+            <tr>
+              <th>Required development schedule</th>
+              <td><input class="eaf" type="radio" name="schedule" value="1.23" required></td>
+              <td><input class="eaf" type="radio" name="schedule" value="1.08"></td>
+              <td><input class="eaf" type="radio" name="schedule" value="1.00"></td>
+              <td><input class="eaf" type="radio" name="schedule" value="1.04"></td>
+              <td><input class="eaf" type="radio" name="schedule" value="1.10"></td>
+              <td><input class="eaf" type="radio" name="schedule" value="null"></td>
+            </tr>
+          </table>
+        </fieldset>
+        <input type="submit" value="Calculate EAF">
+      </form>
+    </div>
     <div id="formOutput" class="mx-auto my-3 border w-50">
       <p id="outputFP"></p>
       <p id="outputLOC"></p>

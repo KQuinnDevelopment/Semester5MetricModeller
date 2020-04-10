@@ -3,6 +3,152 @@ window.onload = function () {
     this.populateLanguages();
     this.calculateFp();
     this.calculateLOC();
+    this.calculateEAF();
+};
+
+function calculateEAF() {
+    
+    form = document.getElementById('calculateEAF');
+
+    form.onsubmit = function(e) {
+
+        e.preventDefault();
+
+        reliabilityFactor = document.getElementsByClassName('reliability');
+        for ( i = 0; i < reliabilityFactor.length; i++ )
+        {
+            if ( reliabilityFactor[i].checked )
+            {
+                reliability = reliabilityFactor[i].value;
+            }
+        }
+
+        sizeFactor = document.getElementsByClassName('size');
+        for ( i = 0; i < sizeFactor.length; i++ )
+        {
+            if ( sizeFactor[i].checked )
+            {
+                size = sizeFactor[i].value;
+            }
+        }
+
+        complexityFactor = document.getElementsByClassName('complexity');
+        for ( i = 0; i < complexityFactor.length; i++ )
+        {
+            if ( complexityFactor[i].checked )
+            {
+                complexity = complexityFactor[i].value;
+            }
+        }
+
+        runtimeFactor = document.getElementsByClassName('runtime');
+        for ( i = 0; i < runtimeFactor.length; i++ )
+        {
+            if ( runtimeFactor[i].checked )
+            {
+                runtime = runtimeFactor[i].value;
+            }
+        }
+
+        memoryFactor = document.getElementsByClassName('memory');
+        for ( i = 0; i < memoryFactor.length; i++ )
+        {
+            if ( memoryFactor[i].checked )
+            {
+                memory = memoryFactor[i].value;
+            }
+        }
+
+        volatilityFactor = document.getElementsByClassName('volatility');
+        for ( i = 0; i < volatilityFactor.length; i++ )
+        {
+            if ( volatilityFactor[i].checked )
+            {
+                volatility = volatilityFactor[i].value;
+            }
+        }
+
+        turnaboutFactor = document.getElementsByClassName('turnabout');
+        for ( i = 0; i < turnaboutFactor.length; i++ )
+        {
+            if ( turnaboutFactor[i].checked )
+            {
+                turnabout = turnaboutFactor[i].value;
+            }
+        }
+
+        analystFactor = document.getElementsByClassName('analyst');
+        for ( i = 0; i < analystFactor.length; i++ )
+        {
+            if ( analystFactor[i].checked )
+            {
+                analyst = analystFactor[i].value;
+            }
+        }
+
+        applicationsFactor = document.getElementsByClassName('applications');
+        for ( i = 0; i < applicationsFactor.length; i++ )
+        {
+            if ( applicationsFactor[i].checked )
+            {
+                applications = applicationsFactor[i].value;
+            }
+        }
+
+        engineerFactor = document.getElementsByClassName('engineer');
+        for ( i = 0; i < engineerFactor.length; i++ )
+        {
+            if ( engineerFactor[i].checked )
+            {
+                engineer = engineerFactor[i].value;
+            }
+        }
+
+        vmFactor = document.getElementsByClassName('vm');
+        for ( i = 0; i < vmFactor.length; i++ )
+        {
+            if ( vmFactor[i].checked )
+            {
+                vm = vmFactor[i].value;
+            }
+        }
+
+        languageFactor = document.getElementsByClassName('language');
+        for ( i = 0; i < languageFactor.length; i++ )
+        {
+            if ( languageFactor[i].checked )
+            {
+                language = languageFactor[i].value;
+            }
+        }
+
+        methodsFactor = document.getElementsByClassName('methods');
+        for ( i = 0; i < methodsFactor.length; i++ )
+        {
+            if ( methodsFactor[i].checked )
+            {
+                methods = methodsFactor[i].value;
+            }
+        }
+
+        toolsFactor = document.getElementsByClassName('tools');
+        for ( i = 0; i < toolsFactor.length; i++ )
+        {
+            if ( toolsFactor[i].checked )
+            {
+                tools = toolsFactor[i].value;
+            }
+        }
+
+        scheduleFactor = document.getElementsByClassName('schedule');
+        for ( i = 0; i < scheduleFactor.length; i++ )
+        {
+            if ( scheduleFactor[i].checked )
+            {
+                schedule = scheduleFactor[i].value;
+            }
+        }
+    };
 };
 
 function populateLanguages() {
