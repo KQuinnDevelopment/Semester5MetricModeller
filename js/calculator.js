@@ -5,7 +5,7 @@ window.onload = function () {
 };
 
 function populateLanguages() {
-    $.getJSON('../data/php/language_productivity.php', { all: 'true' } )
+    $.getJSON('../data/php/language_productivity.php' )
     .done( function(data) {
         for( i = 0; i < data.length; i++ )
         {
