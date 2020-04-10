@@ -3,8 +3,10 @@ window.onload = function () {
     var form = document.getElementById('fpCalculator');
     form.onsubmit = function(e) {
         
+        // Prevent clearing of inputs
         e.preventDefault();
 
+        // Get weight factor for each information domain values
         inputsWeight = document.getElementsByName("inputsWeight");
         for ( i = 0; i < inputsWeight.length; i++ )
         {
@@ -41,8 +43,10 @@ window.onload = function () {
             }
         }
         
+        // Calculate Unadjust Function Points
         ufp = document.getElementById("inputs").value * input + document.getElementById("outputs").value * output + document.getElementById("inquiries").value * inquiries + document.getElementById("files").value * files + document.getElementById("interfaces").value * interfaces;
         
+        // Sum technical complexity factor
         complexItems = document.getElementsByClassName("technical");
         technical = 0;
 
@@ -51,10 +55,14 @@ window.onload = function () {
             technical += parseInt(complexItems[i].value);
         }
         
+        // Calculate Technical Complexity Factor
         tcf = 0.65 + ( 0.1 * technical);
-        fp = tcf * ufp;
+        // Calculate total function points
+        // Round to one deciaml place
+        fp = Math.round( (tcf * ufp) * 10 ) / 10;
         outputDiv = document.getElementById("formOutput");
         outputDiv.innerHTML = "Function Points: " + fp;
+        // Debug output
         console.log("Function Points: " + fp);
     };
 };

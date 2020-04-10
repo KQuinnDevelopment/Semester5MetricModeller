@@ -8,22 +8,22 @@
  */
 
 try {
-    //STANDARD
+    // set database to use
     $database = "metric_modeller";
+    // Set options to retrieve data
     $options = [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-        //if not enabled some queries dont work
-            //posts will not be loaded
-        //PDO::ATTR_EMULATE_PREPARES => false,
     ];
     
     $char = "utf8";
+    // Credentials
     $server = "localhost";
     $user = "root";
     $password = "";
-    
+    // Connection string
     $dbh = new PDO("mysql:host=$server;dbname=$database;charset=$char", $user, $password, $options);
+
 } catch (Exception $ex) {
     die("ERROR: Couldn't connect.{$ex->getMessage()}");
 }

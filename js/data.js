@@ -1,5 +1,6 @@
 window.onload = function () {
 
+    // AJAX request to get table contents
     $.getJSON('../data/php/language_productivity.php')
     .done( function(data) { 
         console.log('Retrieved data');
@@ -10,6 +11,7 @@ window.onload = function () {
     });
 };
 
+// Add data to table view
 function populateTable(data) 
 {
     for( i = 0; i < data.length; i++ )

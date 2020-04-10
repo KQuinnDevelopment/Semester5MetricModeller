@@ -2,20 +2,28 @@
 
 include_once "../config/db.php";
 
+// Allow access only if request is correct method
 if ( $_SERVER['REQUEST_METHOD'] === 'GET' )
 {  
-    try
+    // Options on what type of data to retrieve
+    if( empty( $_GET['language'] ) )
     {
-        $command = "SELECT * FROM language_productivity";
-        $stmt = $dbh->prepare($command);
-        $stmt->execute();    
-    } 
-    catch (EException $e)
-    {
-        die("Error: Could not connect: " . $e->getMessage());
+        try
+        {
+            $command = "SELECT * FROM language_productivity";
+            $stmt = $dbh->prepare($command);
+            $stmt->execute();    
+        } 
+        catch (EException $e)
+        {
+            die("Error: Could not connect: " . $e->getMessage());
+        }
+        $result = $stmt->fetchAll();
+        // Return succesful
+        http_reponse_code(200);
+        echo json_encode($result);
     }
-    $result = $stmt->fetchAll();
-    echo json_encode($result);
 }
-return 0;
+// Set error code for debugging
+http_reponse_code(400);
 ?>
