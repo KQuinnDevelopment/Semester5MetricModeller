@@ -1,5 +1,23 @@
 
 window.onload = function () {
+    this.calculateFp();
+
+};
+
+function populateLanguages() {
+    $.getJSON('../data/php/language_productivity.php', { all: 'true' } )
+    .done( function(data) {
+        for( i = 0; i < data.length; i++ )
+        {
+            $('#language').append('<option value="' + data[i].ID + '">' + data[i].LANGUAGE + '</option>');
+        }
+    })
+    .fail( function() {
+        console.log('Failed to retrieve data.')
+    });
+};
+
+function calculateFp() {
     var form = document.getElementById('fpCalculator');
     form.onsubmit = function(e) {
         

@@ -6,13 +6,30 @@ include_once "../config/db.php";
 if ( $_SERVER['REQUEST_METHOD'] === 'GET' )
 {  
     // Options on what type of data to retrieve
-    if( empty( $_GET['language'] ) )
+    if( empty( $_GET['all'] ) )
     {
         try
         {
             $command = "SELECT * FROM language_productivity";
             $stmt = $dbh->prepare($command);
             $stmt->execute();    
+        } 
+        catch (EException $e)
+        {
+            die("Error: Could not connect: " . $e->getMessage());
+        }
+        $result = $stmt->fetchAll();
+        // Return succesful
+        http_reponse_code(200);
+        echo json_encode($result);
+    }
+    if ( $_GET['all'] )
+    {
+        try
+        {
+            $command = "SELECT ID, LANGUAGE FROM language_productivity";
+            $stmt = $dbh->prepare($command);
+            $stmt->execute();
         } 
         catch (EException $e)
         {
