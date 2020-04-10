@@ -15,7 +15,7 @@ try {
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
         //if not enabled some queries dont work
             //posts will not be loaded
-        PDO::ATTR_EMULATE_PREPARES => false,
+        //PDO::ATTR_EMULATE_PREPARES => false,
     ];
     
     $char = "utf8";
