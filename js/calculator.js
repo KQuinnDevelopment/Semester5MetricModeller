@@ -74,7 +74,7 @@ function calculateFp() {
         }
         
         // Calculate Technical Complexity Factor
-        tcf = 0.65 + ( 0.1 * technical);
+        tcf = 0.65 + ( 0.01 * technical);
         // Calculate total function points
         // Round to one deciaml place
         fp = Math.round( (tcf * ufp) * 10 ) / 10;
