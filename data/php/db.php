@@ -9,7 +9,7 @@
 
 try {
     //STANDARD
-    $database = "000753196";
+    $database = "metric_modeller";
     $options = [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_BOTH,
@@ -17,21 +17,11 @@ try {
             //posts will not be loaded
         PDO::ATTR_EMULATE_PREPARES => false,
     ];
+    
     $char = "utf8";
-    
-    //HOME
-    
     $server = "localhost";
     $user = "root";
     $password = "";
-    
-    //SCHOOL
-    /*
-    $user = "000753196";
-    $server = "csunix.mohawkcollege.ca";
-    $password = "19960807";
-    
-    */
     
     $dbh = new PDO("mysql:host=$server;dbname=$database;charset=$char", $user, $password, $options);
 } catch (Exception $ex) {
