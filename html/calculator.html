@@ -65,9 +65,9 @@
 
       <button id="" class="btn btn-primary my-2 py-2" type="submit">Submit</button>
     </form>
-    <div class="container ">
+    <div class="container " style="margin-bottom: 30px">
         <h3 style="margin-top: 50px;">Calculate Software Team Level </h3>
-        <table  style="margin-left:30%; margin-right:15%;">
+        <table  style="margin-left:25%; margin-right:15%;">
           <tr></tr>
             <th>Team level</th>
             <th>
@@ -75,19 +75,19 @@
             </th>
           </tr>
           <tr>
-              <td>Average number of files need to be developed</td>
+              <td>Average number of files needed per App</td>
               <td>
                 <input id="fileNumber" size="50" type="number" value="1" />
               </td>
             </tr>
             <tr>
-                <td>Average number of lines of each file</td>
+                <td>Average number of lines per file</td>
                 <td>
                   <input id="lineNumber" size="50" type="number" value="1" />
                 </td>
               </tr>
               <tr>
-                  <td>Average number of days of each file</td>
+                  <td>Average number of days needed per file</td>
                   <td>
                     <input id="daysFileNumber" size="50" type="number" value="1" />
                   </td>
@@ -99,20 +99,20 @@
                     </td>
                   </tr>
           <tr>
-            <td>Average number of senior developers</td>
+            <td>Average number of senior developers per team</td>
             <td>
               <input id="seniorNumber" size="50" type="number" value="1" />
             </td>
           </tr>
           <tr>
-            <td>Average number of middle developers</td>
+            <td>Average number of middle developers per team</td>
             <td>
               <input id="middleNumber" size="50"  type="number" value="1" />
             </td>
           </tr>
           
           <tr>
-            <td>Average number of junior developers</td>
+            <td>Average number of junior developers per team</td>
             <td>
               <input id="juniorNumber" size="50"  type="number" value="1" />
             </td>
@@ -128,8 +128,8 @@
           </tr>
         </table>
        
-        <button onclick="teamLevelCalc();">Calculate Team level</button>
-        <button onclick="ClearTeamLevel();">Clear Form</button> 
+        <button onclick="teamLevelCalc();" style="margin-right: 20px">Calculate Team Level</button>
+        <button onclick="ClearTeamLevel();" >Clear Form</button> 
     </div>
   </div>
   <footer class="border-top footer text-muted text-center">
@@ -154,7 +154,7 @@
       } else {
         
 
-        var teamlevelScore = (numFile * 5+ numLine*3+numDay*0.5*5+numJunior * 0.5 + numMiddle * 2 + numSenior * 5) / (numFile+numDay+numDifficulty+numFile+numJunior + numMiddle + numSenior);
+        var teamlevelScore = (numFile * 5+ numLine*2.5+ numDay*0.5 + numDifficulty*5+ numJunior * 0.5 + numMiddle * 2 + numSenior * 5) / (numFile+numDay+numDifficulty+numFile+numJunior + numMiddle + numSenior);
         var teamScore = teamlevelScore.toFixed(2);
         document.getElementById("teamLevelScore").innerHTML = "" + teamScore;
       }
