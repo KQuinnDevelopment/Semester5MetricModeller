@@ -11,6 +11,7 @@
   <!-- custom css -->
   <link rel="stylesheet" type="text/css" href="../style/calculator.css">
 </head>
+
 <body>
   <header>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
@@ -64,6 +65,72 @@
 
       <button id="" class="btn btn-primary my-2 py-2" type="submit">Submit</button>
     </form>
+    <div class="container ">
+        <h3 style="margin-top: 50px;">Calculate Software Team Level </h3>
+        <table  style="margin-left:30%; margin-right:15%;">
+          <tr></tr>
+            <th>Team level</th>
+            <th>
+              number
+            </th>
+          </tr>
+          <tr>
+              <td>Average number of files need to be developed</td>
+              <td>
+                <input id="fileNumber" size="50" type="number" value="1" />
+              </td>
+            </tr>
+            <tr>
+                <td>Average number of lines of each file</td>
+                <td>
+                  <input id="lineNumber" size="50" type="number" value="1" />
+                </td>
+              </tr>
+              <tr>
+                  <td>Average number of days of each file</td>
+                  <td>
+                    <input id="daysFileNumber" size="50" type="number" value="1" />
+                  </td>
+                </tr>
+                <tr>
+                    <td>Average number of file difficulty</td>
+                    <td>
+                      <input id="difficultyFile" size="50"  type="number" value="1" />
+                    </td>
+                  </tr>
+          <tr>
+            <td>Average number of senior developers</td>
+            <td>
+              <input id="seniorNumber" size="50" type="number" value="1" />
+            </td>
+          </tr>
+          <tr>
+            <td>Average number of middle developers</td>
+            <td>
+              <input id="middleNumber" size="50"  type="number" value="1" />
+            </td>
+          </tr>
+          
+          <tr>
+            <td>Average number of junior developers</td>
+            <td>
+              <input id="juniorNumber" size="50"  type="number" value="1" />
+            </td>
+          </tr>
+    
+    
+
+          <tr>
+            <th colspan="2">
+              Team Level:
+              <span id="teamLevelScore"  style="float: right;"></span>
+            </th>
+          </tr>
+        </table>
+       
+        <button onclick="teamLevelCalc();">Calculate Team level</button>
+        <button onclick="ClearTeamLevel();">Clear Form</button> 
+    </div>
   </div>
   <footer class="border-top footer text-muted text-center">
     <div class="container py-2">
@@ -71,4 +138,31 @@
     </div>
   </footer>
 </body>
+<script>
+    function teamLevelCalc() {
+      var numFile = parseInt($("#fileNumber").val());
+      var numLine = parseInt($("#lineNumber").val());
+      var numDay = parseInt($("#daysFileNumber").val());
+      var numDifficulty = parseInt($("#difficultyFile").val());
+      var numJunior = parseInt($("#juniorNumber").val());
+      var numMiddle = parseInt($("#middleNumber").val());
+      var numSenior = parseInt($("#seniorNumber").val());
+
+
+      if (numFile === 0&&numLine === 0&&numDay === 0&&numDifficulty === 0 &&numJunior === 0 && numMiddle === 0 && numSenior === 0) {
+        alert("Wrong Input");
+      } else {
+        
+
+        var teamlevelScore = (numFile * 5+ numLine*3+numDay*0.5*5+numJunior * 0.5 + numMiddle * 2 + numSenior * 5) / (numFile+numDay+numDifficulty+numFile+numJunior + numMiddle + numSenior);
+        var teamScore = teamlevelScore.toFixed(2);
+        document.getElementById("teamLevelScore").innerHTML = "" + teamScore;
+      }
+    }
+    function ClearTeamLevel() {
+      $("#fileNumber,#lineNumber,#daysFileNumber,#difficultyFile,#juniorNumber, #middleNumber, #seniorNumber").val("0");
+      document.getElementById("teamLevelScore").innerHTML = "";
+      
+    }
+  </script>
 </html>
