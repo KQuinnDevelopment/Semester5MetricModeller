@@ -156,7 +156,6 @@ function calculateEAF() {
             if ( ! isNaN( eafValues[i] ) )
             {   
                 B *= eafValues[i];
-                console.log(eafValues[i]);
             }
         }
 
@@ -165,25 +164,37 @@ function calculateEAF() {
         {
             if ( type[i].checked )
             {
-                console.log(type[i]);
                 A = parseFloat( type[i].getAttribute('a') );
                 C = parseFloat( type[i].getAttribute('c') );
                 D = parseFloat( type[i].getAttribute('d') );
                 E = parseFloat( type[i].getAttribute('e') );
             }
         }
+        
         outputLOC = document.getElementById("outputLOC");
         kloc = parseInt( outputLOC.getAttribute("loc") ) / 1000;
+
         effort = A * B * ( Math.pow( kloc, C ) );
         effort = Math.round( effort * 10 ) / 10;
+
         time = D * ( Math.pow( effort, E ) );
         time = Math.round( time * 10 ) / 10;
-        staff = effort / time;
+
+        staff = Math.round( effort / time );
+
+        // If project has very low estimate, may round to 0 which is not possible
+        // Set to 1 if that is the case
+        if ( staff === 0 )
+        {
+            staff = 1;
+        }
+
         outputEffort = document.getElementById('effort');
         outputEffort.innerHTML = "Estimated effort in person months: " + effort;
         outputTime = document.getElementById('time');
         outputTime.innerHTML = "Total months estimated for project: " + time;
-        outputStaffing = "Average staffing necessary: " + staff + " people.";
+        outputStaffing = document.getElementById('staffing');
+        outputStaffing.innerHTML = "Average staffing necessary: " + staff + " people.";
     };
 };
 
