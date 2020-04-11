@@ -351,6 +351,16 @@
         </fieldset>
         <input class="btn btn-primary my-2 py-2" type="submit" value="Calculate EAF">
       </form>
+      <form id="calculateWage">
+        <fieldset>
+          <legend>Input the average wage to calculate the estimated cost of the project.</legend>
+          <div>
+            <label for="wage">Enter the average pay per hour for your staff: </label>
+            <input type="number" min="0" id="wage" name="wage">
+          </div>
+        </fieldset>
+        <input type="submit" value="Calculate Cost">
+      </form>
     </div>
     <div id="formOutput" class="mx-auto my-3 border w-50">
       <p id="outputFP"></p>
@@ -358,6 +368,7 @@
       <p id="effort"></p>
       <p id="time"></p>
       <p id="staffing"></p>
+      <p id="cost"></p>
     </div>
   </div>
   <footer class="border-top footer text-muted text-center">

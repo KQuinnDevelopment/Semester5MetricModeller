@@ -4,7 +4,22 @@ window.onload = function () {
     this.calculateFp();
     this.calculateLOC();
     this.calculateEAF();
+    this.calculateWage()
 };
+
+function calculateWage() {
+    form = document.getElementById('caluclateWage');
+
+    form.onsubmit = function(e) {
+        e.preventDefault();
+        effort = parseInt( document.getElementById('effort').getAttribute('effort') );
+        wage = parseInt( document.getElementById('wage') );
+        cost = wage * effort;
+        outputCost = document.getElementById('cost');
+        outputCost.setAttribute('cost', cost);
+        outputCost.innerHTML = "The estimated cost of your project is: $" + cost;
+    }
+}
 
 function calculateEAF() {
     
@@ -190,10 +205,13 @@ function calculateEAF() {
         }
 
         outputEffort = document.getElementById('effort');
+        outputEffort.setAttribute('effort', effort);
         outputEffort.innerHTML = "Estimated effort in person months: " + effort;
         outputTime = document.getElementById('time');
+        outputTime.setAttribute('time', time);
         outputTime.innerHTML = "Total months estimated for project: " + time;
         outputStaffing = document.getElementById('staffing');
+        outputStaffing.setAttribute('staffing', staff);
         outputStaffing.innerHTML = "Average staffing necessary: " + staff + " people.";
     };
 };
