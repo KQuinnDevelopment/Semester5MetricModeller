@@ -16,6 +16,22 @@ window.onload = function () {
     .fail( function() {
         console.error('Failed to retrieve data.');
     });
+
+    displayProjects = document.getElementById('displayProjects');
+    displayLanguages = document.getElementById('displayLanguages');
+
+    displayProjects.onclick = function(e) {
+        languageTable = document.getElementById('languageTable');
+        projectTable = document.getElementById('projectTable');
+        projectTable.style.display = "block";
+        languageTable.style.display = "none";
+    };
+    displayLanguages.onclick = function(e) {
+        languageTable = document.getElementById('languageTable');
+        projectTable = document.getElementById('projectTable');
+        projectTable.style.display = "none";
+        languageTable.style.display = "block";
+    }
 };
 
 // Add data to table view
