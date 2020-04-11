@@ -20,6 +20,7 @@ window.onload = function () {
     displayProjects = document.getElementById('displayProjects');
     displayLanguages = document.getElementById('displayLanguages');
 
+    // Add functionality to show/hide tables on button click
     displayProjects.onclick = function(e) {
         languageDiv = document.getElementById('languageDiv');
         projectDiv = document.getElementById('projectDiv');

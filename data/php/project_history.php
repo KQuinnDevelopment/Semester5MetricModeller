@@ -4,6 +4,7 @@ include_once "../config/db.php";
 
 if ( $_SERVER['REQUEST_METHOD'] === 'GET' )
 {  
+    // Get all values to populate table
     if ( ! $_GET['column'] )
     {
         try
