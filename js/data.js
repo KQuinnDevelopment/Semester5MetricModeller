@@ -67,7 +67,6 @@ function populateLanguageTable(data)
 
 function populateProjectTable(data)
 {
-    console.log(data);
     for ( i = 0; i < data.length; i++ )
     {
         $('#projectsTable tr:last').after('<tr><td>' + data[i].project_number + '</td><td>' + 
@@ -88,7 +87,7 @@ function populateFieldDefinitions(data)
     console.log(data);
     for ( i = 0; i < data.length; i++ )
     {
-        $('#fieldsDefinitionsTable tr:last').after('<tr><td>' + data[i].project_number + '</td><td>' + 
+        $('#fieldDefinitionsTable tr:last').after('<tr><td>' + data[i].project_number + '</td><td>' + 
                                             data[i].project_name + '</td><td>' + data[i].project_description + '</td><td>' + 
                                             data[i].project_type + '</td><td>' + data[i].start_date + '</td><td>' + 
                                             data[i].end_date + '</td><td>' + data[i].est_duration + '</td><td>' + 
