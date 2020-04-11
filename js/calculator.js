@@ -21,10 +21,12 @@ function calculateWage() {
         // Prevent form from submitting and clearing inputs
         e.preventDefault();
 
-        effort = parseInt( document.getElementById('effort').getAttribute('effort') );
-        wage = parseInt( document.getElementById('wage').value );
+        effort = parseFloat( document.getElementById('effort').getAttribute('effort') );
+        wage = parseFloat( document.getElementById('wage').value );
 
+        console.log('Effort: ' + effort);
         effortHours = effort * 20 * 8;
+        console.log("effort hours: " + effortHours);
         cost = wage * effortHours;
 
         outputCost = document.getElementById('cost');
