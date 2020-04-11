@@ -22,7 +22,7 @@ language_productivity table
   - Level of a language is based on how many statements are required to complete one function point of the proposed project.
     This gives a basis to compare the proposed project size from one language to another
   - Average statements per function point is the average number of lines of code required to complete a function point in that language
-  - field 4 i have no idea, it appeared when i converted the accessdb file to sql, and i couldn't be bothered to remove it
+  - field 4 I have no idea, it appeared when I converted the accessdb file to sql, and i couldn't be bothered to remove it
 
 --------------------------------------------------------------------------------------------------------------------------------
 

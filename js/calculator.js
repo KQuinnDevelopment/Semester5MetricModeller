@@ -173,15 +173,17 @@ function calculateEAF() {
             }
         }
         outputLOC = document.getElementById("outputLOC");
-        kloc = parseInt( outputLOC.getAttribute("loc") ) / 100;
+        kloc = parseInt( outputLOC.getAttribute("loc") ) / 1000;
         effort = A * B * ( Math.pow( kloc, C ) );
         effort = Math.round( effort * 10 ) / 10;
         time = D * ( Math.pow( effort, E ) );
         time = Math.round( time * 10 ) / 10;
+        staff = effort / time;
         outputEffort = document.getElementById('effort');
         outputEffort.innerHTML = "Estimated effort in person months: " + effort;
         outputTime = document.getElementById('time');
         outputTime.innerHTML = "Total months estimated for project: " + time;
+        outputStaffing = "Average staffing necessary: " + staff + " people.";
     };
 };
 
