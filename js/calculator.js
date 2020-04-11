@@ -24,7 +24,8 @@ function calculateWage() {
         effort = parseInt( document.getElementById('effort').getAttribute('effort') );
         wage = parseInt( document.getElementById('wage').value );
 
-        cost = wage * effort;
+        effortHours = effort * 20 * 8;
+        cost = wage * effortHours;
 
         outputCost = document.getElementById('cost');
         outputCost.setAttribute('cost', cost);
