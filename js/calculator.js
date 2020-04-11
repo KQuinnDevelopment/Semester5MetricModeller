@@ -14,7 +14,7 @@ window.onload = function () {
 
 function calculateWage() {
 
-    form = document.getElementById('caluclateWage');
+    form = document.getElementById('calculateWage');
 
     form.onsubmit = function(e) {
 
